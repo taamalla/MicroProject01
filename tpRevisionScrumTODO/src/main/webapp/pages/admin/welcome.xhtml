@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/template.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="content">
+		<!-- BEGIN : TP1 JSF Introduction Login -->
+		<h:panelGroup>
+			<h:form>
+				<h:outputText
+					value="Bonjour #{userController.authenticatedUser.fName} #{userController.authenticatedUser.lName}" />
+				<h:outputText value=" || " />
+				<h:commandLink value="Déconnexion"
+					action="#{userController.doLogout()}" />
+				<br />
+				<h:outputText
+					value="Vous etes dans l'espace pour DEVELOPER et SCRUM_MASTER  :) " />
+				<br />
+				<br />
+			</h:form>
+		</h:panelGroup>
+		<h:panelGroup columns="2">
+			<h:form>
+				<h:dataTable value="Q29"
+					var="project" border="1">
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Libelé" />
+						</f:facet>
+						<h:outputText value="#{project.title}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Description" />
+						</f:facet>
+						<h:outputText value="#{project.description}" />
+					</h:column>
+				</h:dataTable>
+			</h:form>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>
+</html>
